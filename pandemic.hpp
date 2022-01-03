@@ -44,6 +44,15 @@ class pandemic
     if (initial_state.n_ == 0) {
         throw std::runtime_error{"there must be at least one person in the population"};
     }
+
+    if (beta_ / gamma_ <= 1) {
+        throw std::runtime_error{"with these starting values of beta and gamma the pandemic won't start"};
+    }
+
+    if (initial_state.infected_ <= 0) {
+        throw std::runtime_error{"there must be at least one person infected"};
+    }    
+
     }
     
     //this vector collets the datas of the population 
