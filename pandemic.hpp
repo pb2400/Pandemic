@@ -59,8 +59,8 @@ class pandemic
         std::vector<population_state> progression{initial_state};
         population_state p_s = progression.back();
         for (int i = 1; i != d; ++i ) {
-            const double bsni = beta_ * initial_state.susceptibles_ / initial_state.n_ * initial_state.infected_;
-            const double gs = gamma_ * initial_state.susceptibles_;
+            double bsni = beta_ * p_s.susceptibles_ / p_s.n_ * p_s.infected_;
+            double gs = gamma_ * p_s.infected_;
             p_s.susceptibles_ -= bsni;
             p_s.infected_ += bsni - gs;
 
