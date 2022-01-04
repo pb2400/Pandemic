@@ -7,12 +7,12 @@
 
 struct population_state
 {
+      //number of people analized
+    int n_;
     // peoples that can be infected
     int susceptibles_;
     // peoples that are infected
     int infected_;
-    //number of people analized
-    int n_;
     // dead or healed people, that can't get infected and can't infect anymore
     int removed_;
     
@@ -29,10 +29,13 @@ class pandemic
     //you will be able calculate the evolution of the pandemic starting with
     //whatever value of the population you prefer 
 
-    pandemic(population_state const& population_0, int duration_, double b_, double g_) 
+    pandemic(population_state const& population_0, double b_, double g_) 
     : initial_state{population_0}, beta_{b_}, gamma_{g_}
     {
-         //some if to check if the starting value can be accepted
+    }
+    void value_checkings() 
+    {
+     //some if to check if the starting value can be accepted
      if (beta_ <= 0 || beta_ > 1) {
         throw std::runtime_error{"beta value is not acceptable"};
     }
@@ -41,7 +44,7 @@ class pandemic
         throw std::runtime_error{"gamma value is not acceptable"};
     }
 
-    if (initial_state.n_ == 0) {
+    if (initial_state.n_ <= 0) {
         throw std::runtime_error{"there must be at least one person in the population"};
     }
 
@@ -51,8 +54,7 @@ class pandemic
 
     if (initial_state.infected_ <= 0) {
         throw std::runtime_error{"there must be at least one person infected"};
-    }    
-
+    }   
     }
     
     //this vector collets the datas of the population 
