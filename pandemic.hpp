@@ -1,5 +1,5 @@
-#ifndef PANDEMIC_CPP
-#define PANDEMIC_CPP
+#ifndef PANDEMIC_PROVA_HPP
+#define PANDEMIC_PROVA_HPP
 
 #include <vector>
 #include <cmath>
@@ -7,83 +7,48 @@
 
 struct population_state
 {
-      //number of people analized
+    //number of people analized
+    //value inserted in input
+    //must be an int positive number, greater than 0
+    //n = susceptibles_ + infected_ + removed_
     int n_;
-    // peoples that can be infected
+
+    //peoples that can be infected
+    //in a pandemic simulated from the beginning the starting value
+    //is near to n_
     int susceptibles_;
-    // peoples that are infected
+
+    //peoples that are infected
+    //in a pandemic simulated from the beginnin the starting value
+    //is near to 0
     int infected_;
-    // dead or healed people, that can't get infected and can't infect anymore
+
+    //dead or healed people
+    //can't get infected and can't infect anymore
     int removed_;
     
 };
 
-// the following class will calculate the evolution of the pandemic
-
+//the following class will calculate the evolution of the pandemic
 class pandemic
 {
+    private:
     population_state initial_state;
+    //has to be a number included between 
     double beta_;
     double gamma_;
     public:
-    //you will be able calculate the evolution of the pandemic starting with
-    //whatever value of the population you prefer 
 
-    pandemic(population_state const& population_0, double b_, double g_) 
-    : initial_state{population_0}, beta_{b_}, gamma_{g_}
-    {
-    }
-    void value_checkings() 
-    {
-     //some if to check if the starting value can be accepted
-     if (beta_ <= 0 || beta_ > 1) {
-        throw std::runtime_error{"beta value is not acceptable"};
-    }
+    //declaration of constructor, definition in pandemic.cpp
+    pandemic(population_state const& population_0, double b_, double g_);
 
-    if (gamma_ <= 0 || gamma_ > 1) {
-        throw std::runtime_error{"gamma value is not acceptable"};
-    }
+    //declaration of method value_checking
+    //definition and more detailed comment in pandemic.cpp
+    void values_checking();
 
-    if (initial_state.n_ <= 0) {
-        throw std::runtime_error{"there must be at least one person in the population"};
-    }
-
-    if (beta_ / gamma_ <= 1) {
-        throw std::runtime_error{"with these starting values of beta and gamma the pandemic won't start"};
-    }
-
-    if (initial_state.infected_ <= 0) {
-        throw std::runtime_error{"there must be at least one person infected"};
-    }   
-    }
-    
-    //this vector collets the datas of the population 
-    //day after day during the pandemic
-    std::vector<population_state> population_check(int d)
-    {
-        if (d == 0) {
-            throw std::runtime_error{"the pandemic has been set on day 0"};
-        }
-        // using a for loop that every time repeated adds a vector
-        // that represents the state of the population that day
-
-        std::vector<population_state> progression{initial_state};
-        population_state p_s = progression.back();
-        for (int i = 1; i != d; ++i ) {
-            double bsni = beta_ * p_s.susceptibles_ / p_s.n_ * p_s.infected_;
-            double gs = gamma_ * p_s.infected_;
-            p_s.susceptibles_ -= bsni;
-            p_s.infected_ += bsni - gs;
-
-            // calculating the number of removed daily by subtracting the 
-            // number of susceptibles and infected from the total number of people
-
-            p_s.removed_ = p_s.n_ - p_s.susceptibles_ - p_s.infected_;
-            progression.push_back(p_s);
-            }
-            return progression;
-    }
-    };
-
+    //declaration of method population_check
+    //definition and more detailed comment in pandemic.cpp
+    std::vector<population_state> population_check(int d);
+};
 
 #endif
