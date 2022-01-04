@@ -1,4 +1,4 @@
-#include "pandemic.prova.hpp"
+#include "pandemic.hpp"
 
     //definition of pandemic constructor 
     pandemic::pandemic(population_state const& population_0, double b_, double g_) 

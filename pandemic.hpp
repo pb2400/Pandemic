@@ -1,5 +1,5 @@
-#ifndef PANDEMIC_PROVA_HPP
-#define PANDEMIC_PROVA_HPP
+#ifndef PANDEMIC_HPP
+#define PANDEMIC_HPP
 
 #include <vector>
 #include <cmath>

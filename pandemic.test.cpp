@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 
-#include "pandemic.prova.hpp"
+#include "pandemic.hpp"
 
 //the way choosen the test the correct operation
 //of the program is to check if he throws all the possible exception
