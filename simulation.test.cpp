@@ -98,7 +98,7 @@ TEST_CASE("testing the simulation")
     }
 
     {
-            world test(3);
+        world test(3);
         test.person(0, 0) = people::i_;
         test.person(0, 2) = people::i_;
         test.person(1, 0) = people::r_;
@@ -117,5 +117,10 @@ TEST_CASE("testing the simulation")
         CHECK(evolved.person(2, 0) == people::r_);
         CHECK(evolved.person(2, 1) == people::r_);
         CHECK(evolved.person(2, 2) == people::r_);
+    }
+
+    {
+        world test(3);
+        CHECK_THROWS(day_after(test, 0.5, 0.9));
     }
 }

@@ -83,6 +83,9 @@ inline world day_after(world const& present, double beta_, double gamma_)
     if (gamma_ <= 0 || gamma_ >= 1) {
         throw std::runtime_error{"gamma's value is not acceptable"};
     }
+    if (beta_ / gamma_ <= 1) {
+            throw std::runtime_error{"beta and gamma ratio is unacceptable"};
+        }
     int const n = present.side();
     world evolved(n);
     for (int i = 0; i != n; ++i) { 
@@ -94,9 +97,6 @@ inline world day_after(world const& present, double beta_, double gamma_)
         }
         if (beta_ > 0.5 && gamma_ > 0.5) {
             a += 1;
-        }
-        if (beta_ / gamma_ <= 1) {
-            throw std::runtime_error{"beta and gamma ratio in unacceptable"};
         }
         int const& inf_ = a;
         if (inf_ >= 4) {
