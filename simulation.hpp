@@ -39,7 +39,9 @@ class world
             throw std::runtime_error{"unacceptable coordinates"};
         }
         auto const index = i * m_side + j;
-        if (index <= 0 || index > static_cast<int>(m_grid.size()));
+        if (index < 0 || index > static_cast<int>(m_grid.size())) {
+            throw std::runtime_error{"the conversion to monodimensional index went wrong "};
+        }
         return m_grid[index];
     }
 
@@ -51,7 +53,9 @@ class world
             throw std::runtime_error{"unacceptable coordinates"};
         }
         auto const index = i * m_side + j;
-        if (index <= 0 || index > static_cast<int>(m_grid.size()));
+        if (index < 0 || index > static_cast<int>(m_grid.size())) {
+            throw std::runtime_error{"the conversion to monodimensional index went wrong "};
+        }
         return m_grid[index];
     }
     friend bool operator ==(world const& l, world const& r)
@@ -91,15 +95,11 @@ inline world day_after(world const& present, double beta_, double gamma_)
     for (int i = 0; i != n; ++i) { 
         for (int j = 0; j != n; ++j) { 
             int a = neighbours_infected(present, i, j);
-
-        if (beta_ >= 0.5 && gamma_ <= 0.5) {
-            a +=2;
-        }
-        if (beta_ > 0.5 && gamma_ > 0.5) {
+         if (beta_ >= 0.5 && gamma_ <= 0.5) {
             a += 1;
         }
         int const& inf_ = a;
-        if (inf_ >= 4) {
+        if (inf_ >= 2) {
             if (present.person(i, j) == people::s_) {
                 evolved.person(i, j) = people::i_;
             } else {

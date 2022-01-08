@@ -31,14 +31,14 @@ void print (world const& population)
 
 int main()
 {
-    world population(50);
+    world population(40);
     double beta;
     double gamma;
     int d_;
     std::cout << "insert beta's value " << '\n';
     std::cin >> beta;
     std::cout << "insert gamma's value " << '\n';
-    std::cin >> beta;
+    std::cin >> gamma;
     std::cout << "choose how many days of the pandemic simulation you want to see " << '\n';
     std::cin >> d_;
 
@@ -48,7 +48,7 @@ int main()
     
     try {
         
-    for (int i = 0; i != population.side() * population.side() / 10; ++i) {
+    for (int i = 0; i != population.side() * population.side() / 25; ++i) {
         int r = dist(eng);
         int c = dist(eng);
         for (; population.person(r, c) == people::i_; r = dist(eng), c = dist(eng));
