@@ -6,4 +6,5 @@ simulation.hpp.gch
 pandemic.hpp.gch
 simulation.cpp 
 simulation.hpp
-main-sim.cpp
+main-sim.cppg
+simulation.test.cpp
