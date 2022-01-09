@@ -33,13 +33,6 @@ class world
     //overloading of method people
     people& person(int r, int c);
 
-    //definition of operator ==
-    //defines the operation of == between tho object 
-    //of world type
-    friend bool operator==(world const& l, world const& r)
-    {
-    return l.m_grid == r.m_grid;
-    }
 };
 
 //definition of free function neighbours_infected
