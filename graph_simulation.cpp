@@ -86,10 +86,10 @@ int neighbours_infected(world const& population_, int r, int c)
     }
 }
 
-//definition of free function day_after
+//definition of free function successive_stage
 //its functionality is to calculate the state of the population
-//day by day 
-world day_after(world const& present, double beta_, double gamma_)
+//stage by stage 
+world successive_stage(world const& present, double beta_, double gamma_)
 {   
     //some if to check if the values of gamma and beta are acceptable
     if (beta_ <= 0 || beta_ >= 1) {
@@ -109,7 +109,7 @@ world day_after(world const& present, double beta_, double gamma_)
 
             //the reason behind this choise is because
             //is because if we follow the formula to calculate the value of the infected
-            //day by day (look in the readme file for more), the smaller is gamma
+            //stage by stage, the smaller is gamma
             //the bigger the value of infected people will be, and the bigger beta is
             //the bigger will be the value of infected day by day
             //in our code that translates in to a "+1" in to the number of neighbours infected
@@ -121,7 +121,7 @@ world day_after(world const& present, double beta_, double gamma_)
         //the only way inf is greater or equal to 2 
         //(based on how the neighbours_infected free function has been implemented)
         //is only if the person analyzed 
-        //is susceptible. if this happens, the day after he will be infected
+        //is susceptible. if this happens, the stage after he will be infected
         //otherwise, he will still be susceptible
         //in every other case, in our representation the person will become/stay removed
         int const& inf_ = a;

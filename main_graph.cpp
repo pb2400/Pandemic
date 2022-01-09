@@ -2,6 +2,8 @@
 #include <chrono>
 #include <random>
 #include <thread>
+#include <cmath>
+#include <cassert>
 
 #include "graph_simulation.hpp"
 
@@ -44,16 +46,21 @@ int main()
     int number;
     double beta;
     double gamma;
-    int d_;
+    int s_;
     std::cout << "insert beta's value " << '\n';
     std::cin >> beta;
     std::cout << "insert gamma's value " << '\n';
     std::cin >> gamma;
-    std::cout << "choose how many days of the pandemic simulation you want to see " << '\n';
-    std::cin >> d_;
-    std::cout <<"choose the number of people you want in the simulation (100 < number < 2500) "
+    std::cout << "choose how many stages of the pandemic simulation you want to see " << '\n';
+    std::cin >> s_;
+    std::cout <<"choose the number of people you want in the simulation (400 < number < 2500) " << '\n';
     std::cin >> number;
-    world population(number/2);
+
+    //the choice of this values for the number of people
+    //is linked to graphical reasons: if < 400 the graph is too small
+    //if > 2500 the graph is too big
+    assert(400 <= number && number <= 2500);
+    world population(sqrt(number));
 
     //building a generator of random numbers
     std::default_random_engine eng{std::random_device{}()};
@@ -76,11 +83,11 @@ int main()
         population.person(r, c) = people::i_;
     }
     
-    //this for prints the evolutio of the pandemy day by day
+    //this for prints the evolutio of the pandemy stage after stage
     //the number of iteration is decided by the user throwgh
-    //the number of days he decides to visualize
-    for (int i = 0; i != d_; ++i) {
-        population = day_after(population, beta, gamma);
+    //the number of stages he decides to visualize
+    for (int i = 0; i != s_; ++i) {
+        population = successive_stage(population, beta, gamma);
         print(population);
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }   

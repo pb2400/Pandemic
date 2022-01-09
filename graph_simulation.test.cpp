@@ -26,7 +26,7 @@ TEST_CASE("testing the simulation")
         CHECK(neighbours_infected(test, 2, 0) == 0);
         CHECK(neighbours_infected(test, 2, 1) == 0);
         CHECK(neighbours_infected(test, 2, 2) == 0);
-        world evolved = day_after(test, 0.6, 0.3);
+        world evolved = successive_stage(test, 0.6, 0.3);
         CHECK(evolved.person(0, 0) == people::r_);
         CHECK(evolved.person(0, 1) == people::r_);
         CHECK(evolved.person(0, 2) == people::r_);
@@ -42,17 +42,17 @@ TEST_CASE("testing the simulation")
     //inserted of gamma and beta wouldn't be valid
     {
         world test(3);
-        CHECK_THROWS(day_after(test, 0.1, 0.2));
+        CHECK_THROWS(successive_stage(test, 0.1, 0.2));
     }
     
     {
         world test(3);
-        CHECK_THROWS(day_after(test, 1.3, 0.5));
+        CHECK_THROWS(successive_stage(test, 1.3, 0.5));
     }
 
     {
         world test(3);
-        CHECK_THROWS(day_after(test, 0.6, -2));
+        CHECK_THROWS(successive_stage(test, 0.6, -2));
     }
 
     //checking the correct functioning in case of the program in case 
@@ -75,7 +75,7 @@ TEST_CASE("testing the simulation")
         CHECK(neighbours_infected(test, 2, 0) == 0);
         CHECK(neighbours_infected(test, 2, 1) == 0);
         CHECK(neighbours_infected(test, 2, 2) == 0);
-        world evolved = day_after(test, 0.4, 0.3);
+        world evolved = successive_stage(test, 0.4, 0.3);
         CHECK(evolved.person(0, 0) == people::r_);
         CHECK(evolved.person(0, 1) == people::r_);
         CHECK(evolved.person(0, 2) == people::r_);
@@ -96,7 +96,7 @@ TEST_CASE("testing the simulation")
         test.person(2, 0) = people::r_;
         test.person(2, 1) = people::r_;
         test.person(2, 2) = people::r_;
-        world evolved = day_after(test, 0.6, 0.3);
+        world evolved = successive_stage(test, 0.6, 0.3);
         CHECK(evolved.person(0, 0) == people::r_);
         CHECK(evolved.person(0, 1) == people::r_);
         CHECK(evolved.person(0, 2) == people::r_);

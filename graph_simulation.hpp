@@ -45,7 +45,7 @@ class world
 //definition of free function neighbours_infected
 int neighbours_infected(world const& population_, int r, int c);
 
-//definition of free function day_after
-world day_after(world const& present, double beta_, double gamma_);
+//definition of free function successive_stage
+world successive_stage(world const& present, double beta_, double gamma_);
 
 #endif
