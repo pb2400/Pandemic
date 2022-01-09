@@ -1,16 +1,17 @@
-#ifndef SIMULAZIONE_GRAPHYCH_HPP
-#define SIMULAZIONE_GRAPHYCH_HPP
+#ifndef SIMULAZIONE_HPP
+#define SIMULAZIONE_HPP
 
 #include <vector>
 #include <iostream>
 
-
+//a person in the population can be 
+//susceptible (s_), infected (i_) or removed
 enum class people{s_, i_, r_};
 
 //all the methods of the class world and all the free function declared
 //in this file are defined in simulation.cpp file
 //look in simulation.cpp file also for the description of
-//each method and free class funcionality
+//each method's and free class funcionality
 
 class world 
 {
@@ -31,20 +32,20 @@ class world
 
     //overloading of method people
     people& person(int r, int c);
-    
+
     //definition of operator ==
-    //defines the operation of == between tho object
+    //defines the operation of == between tho object 
     //of world type
-    friend bool operator ==(world const& l, world const& r)
+    friend bool operator==(world const& l, world const& r)
     {
-        return l.m_grid == r.m_grid;
+    return l.m_grid == r.m_grid;
     }
 };
-
-
 
 //definition of free function neighbours_infected
 int neighbours_infected(world const& population_, int r, int c);
 
 //definition of free function day_after
 world day_after(world const& present, double beta_, double gamma_);
+
+#endif
