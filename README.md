@@ -1,5 +1,7 @@
 AUTORE
+
 Giuseppe Bertolini
+
 MODELLO SIR
 Il progetto consiste nell’implementazione del modello SIR.
 Il modello teorico, che descrive la diffusione di un’epidemia all’interno di una popolazione chiusa, si basa su tre equazioni differenziali, con lo scopo di calcolare lo stato di ogni singola persona, giorno per giorno, durante la pandemia.
@@ -16,8 +18,10 @@ Le tre equazioni differenziali sulle quali si basa il modello sono le seguenti:
 Dove ds = 1 giorno.
 β rappresenta una misura della probabilità di contagio per una persona suscettibile, dopo essere stato a contatto con un positivo.
 λ rappresenta una misura della probabilità di guarigione o morte di un infetto.
+
 DIVISIONE IN PARTI DEL PROGRAMMA
 Il programma è diviso in due parti principali.
+
 PARTE 1
 La prima parte è composta da 4 file: main.cpp, pandemic.cpp, pandemic.test.cpp, pandemic.hpp.
 La struct population_state è stata implementata all’interno del file pandemic.hpp. I membri interni sono degli int che rappresentano il numero di totale delle persone presenti, il numero di suscettibili, infetti e rimossi.
