@@ -20,9 +20,11 @@ Dove ds = 1 giorno.
 λ rappresenta una misura della probabilità di guarigione o morte di un infetto.
 
 DIVISIONE IN PARTI DEL PROGRAMMA
+
 Il programma è diviso in due parti principali.
 
 PARTE 1
+
 La prima parte è composta da 4 file: main.cpp, pandemic.cpp, pandemic.test.cpp, pandemic.hpp.
 La struct population_state è stata implementata all’interno del file pandemic.hpp. I membri interni sono degli int che rappresentano il numero di totale delle persone presenti, il numero di suscettibili, infetti e rimossi.
 All’interno del file pandemic.hpp è stata implementata anche la definizione della classe pandemic e le dichiarazioni dei suoi metodi; la sua funzionalità è quella di calcolare il numero di suscettibili, infetti e rimossi giorno per giorno.
@@ -52,6 +54,7 @@ Per compilare il file necessari all’esecuzione dei test l’utente può esegui
 ![command 12](https://user-images.githubusercontent.com/97054738/148762976-16e0868c-8aa7-4982-8e47-420234dc354c.png)
  
 SECONDA PARTE
+
 La seconda parte del programma è stata implementata per dare l’opportunità all’utente di visualizzare in output una rappresentazione grafica dell’evoluzione della pandemia.
 Questa seconda parte è a sua volta divisa in due parti, tra le quali non c’è differenza nell’implementazione delle classi, metodi e free function che consentono di calcolare lo stato della singola persona (e della popolazione). 
 La differenza è che la seconda parte consente all’utente di visualizzare graficamente i risultati mediante SFML (uso raccomandato).
@@ -94,6 +97,7 @@ Per compilare i file necessari all’esecuzione dei test, l’utente può inseri
 ![command 2 test](https://user-images.githubusercontent.com/97054738/148763007-3dfa03a1-9fd8-4ee5-91bd-1fe131c7f1b4.png)
  
 PARTE 2 SFML
+
 La parte relativa alla visualizzazione grafica mediante SFML è composta da 5 file: main_sfml.cpp, graph_simulation.cpp, display.cpp,
 graph_simulation.hpp, display.hpp.
 I files graph_simulation.cpp e graph_simulation.hpp sono implementati allo stesso modo dei file presenti nella parte precedente.
