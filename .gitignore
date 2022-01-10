@@ -8,3 +8,6 @@ simulation.cpp
 simulation.hpp
 main-sim.cpp
 simulation.test.cpp
+*.out
+progetto.zip
+progetto
