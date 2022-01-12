@@ -8,8 +8,11 @@ Il progetto consiste nell’implementazione del modello SIR.
 Il modello teorico, che descrive la diffusione di un’epidemia all’interno di una popolazione chiusa, si basa su tre equazioni differenziali, con lo scopo di calcolare lo stato di ogni singola persona, giorno per giorno, durante la pandemia.
 Ogni persona ogni giorno può assumere solamente uno dei tre stati fra i seguenti:
 •	Suscettibili (persone che si possono infettare)
+
 •	Infetti (persone che sono infette e possono infettare)
+
 •	Rimossi (persone guarite o morte, non possono più né infettarsi né infettare)
+
 Lo stato di una persona può mutare in una sola direzione:
 Suscettibile -> Infetto -> Rimosso/a
 Le tre equazioni differenziali sulle quali si basa il modello sono le seguenti:
@@ -17,7 +20,9 @@ Le tre equazioni differenziali sulle quali si basa il modello sono le seguenti:
 ![dmodel](https://user-images.githubusercontent.com/97054738/148762843-2bb422d5-c618-4071-bb05-0a894dd3b30c.png)
  
 Dove ds = 1 giorno.
+
 β rappresenta una misura della probabilità di contagio per una persona suscettibile, dopo essere stato a contatto con un positivo.
+
 λ rappresenta una misura della probabilità di guarigione o morte di un infetto.
 
 DIVISIONE IN PARTI DEL PROGRAMMA
@@ -27,7 +32,8 @@ Il programma è diviso in due parti principali.
 PARTE 1
 
 La prima parte è composta da 4 file: main.cpp, pandemic.cpp, pandemic.test.cpp, pandemic.hpp.
-La struct population_state è stata implementata all’interno del file pandemic.hpp. I membri interni sono degli int che rappresentano il numero di totale delle persone presenti, il numero di suscettibili, infetti e rimossi.
+La struct population_state è stata implementata all’interno del file pandemic.hpp. 
+I membri interni sono degli int che rappresentano il numero di totale delle persone presenti, il numero di suscettibili, infetti e rimossi.
 All’interno del file pandemic.hpp è stata implementata anche la definizione della classe pandemic e le dichiarazioni dei suoi metodi; la sua funzionalità è quella di calcolare il numero di suscettibili, infetti e rimossi giorno per giorno.
 Nel file pandemic.cpp sono state implementate le definizioni di tutti i metodi.
 La funzionalità del metodo values_checking è di controllare se tutti i valori inseriti in input sono validi e appartenenti ad un range accettabile dal programma.
