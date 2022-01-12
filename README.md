@@ -3,6 +3,7 @@ AUTORE
 Giuseppe Bertolini
 
 MODELLO SIR
+
 Il progetto consiste nell’implementazione del modello SIR.
 Il modello teorico, che descrive la diffusione di un’epidemia all’interno di una popolazione chiusa, si basa su tre equazioni differenziali, con lo scopo di calcolare lo stato di ogni singola persona, giorno per giorno, durante la pandemia.
 Ogni persona ogni giorno può assumere solamente uno dei tre stati fra i seguenti:
